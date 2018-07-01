@@ -1,5 +1,9 @@
 package main;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+
 import processing.core.PApplet;
 import processing.event.KeyEvent;
 import processing.event.MouseEvent;

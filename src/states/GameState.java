@@ -30,7 +30,45 @@ public final class GameState extends State{
 	public static GameState getInstance(){ return instance; }
 	
 	public GameState() {
-		background = Model.p_app.loadImage("game_background.png");
+		background = Model.p_app.loadImage("images/game_background.png");
+		apple = Model.p_app.loadImage("images/apple.png");
+		portal = Model.p_app.loadImage("images/portal.png");
+		stone = Model.p_app.loadImage("images/stone.png");
+		ground = Model.p_app.loadImage("images/ground.png");
+		fire = Model.p_app.loadImage("images/fire.png");
+		snake_head = Model.p_app.loadImage("images/snake_head.png");
+		snake_body = Model.p_app.loadImage("images/snake_body.png");
+	}
+	
+	private PImage background;
+	private PImage apple;
+	private PImage portal;
+	private PImage stone;
+	private PImage ground;
+	private PImage fire;
+	private PImage snake_head;
+	private PImage snake_body;
+	
+	private ClickManager click_manager;
+	private StateObjectManager state_object_manager;
+	
+	private LinkedList<IntPair> snake_list;
+	private HashSet<IntPair> snake_tiles;
+	private HashSet<IntPair> food_tiles;
+	private HashSet<IntPair> ground_tiles;
+	private HashSet<IntPair> movable_tiles;
+	private HashSet<IntPair> spike_tiles;
+	private IntPair portal_tile;
+	
+	public float tile_size;
+	public IntPair world_size;
+	
+	boolean will_reset, move_selected;
+	Direction selected_direction; 
+	
+	
+	private void reset() {
+		will_reset = true;
 	}
 	
 	private void initialize_buttons() {
@@ -67,30 +105,6 @@ public final class GameState extends State{
 		state_object_manager.addObject(level_select_button);
 	}
 	
-	private PImage background;
-	
-	private ClickManager click_manager;
-	private StateObjectManager state_object_manager;
-	
-	private LinkedList<IntPair> snake_list;
-	private HashSet<IntPair> snake_tiles;
-	private HashSet<IntPair> food_tiles;
-	private HashSet<IntPair> ground_tiles;
-	private HashSet<IntPair> movable_tiles;
-	private HashSet<IntPair> spike_tiles;
-	private IntPair portal_tile;
-	
-	public float tile_size;
-	public IntPair world_size;
-	
-	boolean will_reset, move_selected;
-	Direction selected_direction; 
-	
-	
-	private void reset() {
-		will_reset = true;
-	}
-	
 	private void load_level(String map_path) {
 		InputStream map_stream = getClass().getResourceAsStream("/data/maps/" + map_path + ".txt");
 		BufferedReader map_reader = new BufferedReader(new InputStreamReader(map_stream));
@@ -102,7 +116,7 @@ public final class GameState extends State{
 			int world_height = Integer.parseInt(width_height[1]);
 			
 			world_size = new IntPair(world_width, world_height);
-			tile_size = ((float)Model.size.getX())/world_size.getX();
+			tile_size = Math.min(((float)Model.size.getX())/world_size.getX(), ((float)Model.size.getY())/world_size.getY());
 			
 			snake_list = new LinkedList<>();
 			snake_tiles = new HashSet<>();
@@ -202,53 +216,47 @@ public final class GameState extends State{
 		Model.p_app.stroke(0);
 		Model.p_app.strokeWeight(1);
 		
+		/*
 		for(int col = 0; col < world_size.getX(); ++col) {
 			for(int row = 0; row < world_size.getY(); ++row) {
 				Model.p_app.rect(col*tile_size, row*tile_size, tile_size, tile_size);
 			}	
 		}
+		*/
 		
 		for(IntPair pos : ground_tiles) {
-			Model.p_app.fill(150, 70, 24);
-			Model.p_app.rect(pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
+			Model.p_app.image(ground, pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
 		}
 		
 		for(IntPair pos : movable_tiles) {
-			Model.p_app.fill(154, 155, 147);
-			Model.p_app.rect(pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
+			Model.p_app.image(stone, pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
 		}
 		
 		for(IntPair pos : spike_tiles) {
-			Model.p_app.fill(152, 173, 13);
-			Model.p_app.rect((float)(pos.getX()+.25)*tile_size, (float)(pos.getY()+.25)*tile_size, tile_size/2, tile_size/2);
+			Model.p_app.image(fire, pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
 		}
 		
-		Model.p_app.fill(25, 25, 25);
-		Model.p_app.rect(portal_tile.getX()*tile_size, portal_tile.getY()*tile_size, tile_size, tile_size);
+		Model.p_app.image(portal, portal_tile.getX()*tile_size, portal_tile.getY()*tile_size, tile_size, tile_size);
 		
 		for(IntPair pos : food_tiles) {
-			Model.p_app.fill(219, 19, 43);
-			Model.p_app.rect(pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
+			Model.p_app.image(apple, pos.getX()*tile_size, pos.getY()*tile_size, tile_size, tile_size);
 		}
 		
 		Iterator<IntPair> snake_itr = snake_list.iterator();
 		IntPair next_snake_pos;
 		if(snake_itr.hasNext()) {
 			next_snake_pos = snake_itr.next();
-			Model.p_app.fill(1, 51, 16);
-			Model.p_app.rect(next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
+			Model.p_app.image(snake_head, next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
 		}
+		int num = 1;
 		while(snake_itr.hasNext()) {
 			next_snake_pos = snake_itr.next();
-			if(snake_itr.hasNext()) {
-				Model.p_app.fill(9, 130, 25);
-				Model.p_app.rect(next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
-			
-			}else {
-				Model.p_app.fill(232, 255, 232);
-				Model.p_app.rect(next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
-			
-			}
+			Model.p_app.image(snake_body, next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
+			Model.p_app.textAlign(PApplet.CENTER);
+			Model.p_app.textSize(40);
+			Model.p_app.fill(255, 255, 255);
+			Model.p_app.text(num, (next_snake_pos.getX() + (float).5)*tile_size, (next_snake_pos.getY()+ (float).5)*tile_size+20);
+			++num;
 		}
 		
 		
@@ -302,20 +310,6 @@ public final class GameState extends State{
 		return false;
 	}
 	
-	/*
-	private void fallMovingTile(IntPair pos) {
-		if(!movable_tiles.contains(pos)) return;
-		IntPair down_pos = IntPair.plus(pos, Direction.DOWN.getChange());
-		movable_tiles.remove(pos);
-		while(!(snake_tiles.contains(down_pos) || ground_tiles.contains(down_pos) || food_tiles.contains(down_pos) || movable_tiles.contains(down_pos))) {
-			if(down_pos.getY() >= world_size.getY()) break;
-			down_pos = IntPair.plus(down_pos, Direction.DOWN.getChange());
-		}
-		if(down_pos.getY() < world_size.getY()) movable_tiles.add(IntPair.plus(down_pos, Direction.UP.getChange()));
-		fallMovingTile(IntPair.plus(pos, Direction.UP.getChange()));
-	}
-	*/
-	
 	
 	private void moveSnake(Direction to) {
 		if(will_reset == true) return;
@@ -363,35 +357,11 @@ public final class GameState extends State{
 					if(movable_tiles.contains(new_head_pos)) {
 						movable_tiles.remove(new_head_pos);
 						movable_tiles.add(check_pos);
-						//fallMovingTile(check_pos);
 					}
-					//fallMovingTile(IntPair.plus(tail_pos, Direction.UP.getChange()));
-					
+
 					if(snakeTouchingSpikes()) reset();
 				}
 			}
-			/*
-			boolean breakout = false;
-			while(snakeIsFloating() && !breakout) {
-				snake_tiles.clear();
-				LinkedList<IntPair> new_snake_list = new LinkedList<>();
-				for(IntPair snake_tile : snake_list) {
-					IntPair new_pos = IntPair.plus(snake_tile, Direction.DOWN.getChange());
-					if(new_pos.getY() >= world_size.getY()) {
-						reset();
-						breakout = true;
-						break;
-					}
-					new_snake_list.add(new_pos);
-				}
-				snake_tiles.addAll(new_snake_list);
-				for(IntPair pos : snake_list) {
-					fallMovingTile(IntPair.plus(pos, Direction.UP.getChange()));
-				}
-				snake_list = new_snake_list;
-				if(snakeTouchingSpikes()) reset();
-			}
-			*/
 		}
 	}
 	

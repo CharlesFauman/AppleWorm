@@ -1,6 +1,7 @@
 package storage;
 
 import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 
 import ddf.minim.AudioOutput;
@@ -34,9 +35,11 @@ public final class SoundController {
 		startBackgroundSong("The Sky of our Ancestors");
 	}
 	
-	private static void load_music() {
+	private void load_music() {
 		music = new HashMap<>();
-		File folder = new java.io.File(Model.p_app.sketchPath("") + "src\\data\\music\\");
+		URL url = getClass().getResource("/data/music/");
+	    String path = url.getPath();
+	    File folder = new File(path);
 		String[] music_names = folder.list();
 		for(int i = 0; i < music_names.length; ++i) {
 			String file_name = music_names[i].replace(".mp3", "");
@@ -44,11 +47,13 @@ public final class SoundController {
 		}
 	}
 	
-	private static void load_sounds() {
+	private void load_sounds() {
 		sounds = new HashMap<>();
 		AudioOutput out = minim.getLineOut();
 		
-		File folder = new java.io.File(Model.p_app.sketchPath("") + "src\\data\\sounds\\");
+		URL url = getClass().getResource("/data/sounds/");
+	    String path = url.getPath();
+	    File folder = new File(path);
 		String[] music_names = folder.list();
 		for(int i = 0; i < music_names.length; ++i) {
 			String file_name = music_names[i].replace(".wav", "");

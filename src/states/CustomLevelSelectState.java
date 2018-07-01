@@ -2,6 +2,7 @@ package states;
 
 import java.awt.Color;
 import java.io.File;
+import java.net.URL;
 
 import processing.event.MouseEvent;
 import storage.Model;
@@ -31,7 +32,9 @@ public final class CustomLevelSelectState extends State {
 	// hardcoded settings --------------------------------------:
 	
 	private CustomLevelSelectState() {		
-		File folder = new java.io.File(Model.p_app.sketchPath("") + "src\\data\\maps\\custom\\");
+		URL url = getClass().getResource("/data/maps/custom/");
+	    String path = url.getPath();
+	    File folder = new File(path);
 		level_names = folder.list();
 		num_custom_levels = level_names.length;
 		for(int i = 0; i < num_custom_levels; ++i) {
@@ -134,7 +137,6 @@ public final class CustomLevelSelectState extends State {
 				float y = (float) (offset_y + ((float)row*1.2)*button_size);
 				int button_level_val = col + row*num_cols + start_level - 1;
 				if(button_level_val >= num_custom_levels) continue;
-				System.out.println(button_level_val);
 				Button level_button = new RectangleButton(x, y, button_size, button_size);
 				level_button.setOnClick(() -> {
 					Model.current_custom_num = button_level_val+1;
@@ -142,7 +144,6 @@ public final class CustomLevelSelectState extends State {
 					Model.current_map_path = "custom/" + level_names[button_level_val];
 					Model.switchToState(Model.StateEnum.GAME);
 				});
-				System.out.println(button_level_val);
 				level_button.setText(level_names[button_level_val], new Color(255, 255, 255), 20);
 				level_button.setColors(new Color(65, 155, 9), new Color(114, 198, 61), new Color(179, 255, 132));
 				
