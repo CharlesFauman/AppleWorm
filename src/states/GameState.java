@@ -37,7 +37,9 @@ public final class GameState extends State{
 		ground = Model.p_app.loadImage("images/ground.png");
 		fire = Model.p_app.loadImage("images/fire.png");
 		snake_head = Model.p_app.loadImage("images/snake_head.png");
-		snake_body = Model.p_app.loadImage("images/snake_body.png");
+		snake_body_straight = Model.p_app.loadImage("images/snake_body_straight.png");
+		snake_body_curved = Model.p_app.loadImage("images/snake_body_curved.png");
+		snake_tail = Model.p_app.loadImage("images/snake_tail.png");
 	}
 	
 	private PImage background;
@@ -46,8 +48,7 @@ public final class GameState extends State{
 	private PImage stone;
 	private PImage ground;
 	private PImage fire;
-	private PImage snake_head;
-	private PImage snake_body;
+	private PImage snake_head, snake_body_straight, snake_body_curved, snake_tail;
 	
 	private ClickManager click_manager;
 	private StateObjectManager state_object_manager;
@@ -243,23 +244,26 @@ public final class GameState extends State{
 		}
 		
 		Iterator<IntPair> snake_itr = snake_list.iterator();
-		IntPair next_snake_pos;
+		IntPair prev_snake_pos, current_snake_pos, next_snake_pos;
 		if(snake_itr.hasNext()) {
-			next_snake_pos = snake_itr.next();
-			Model.p_app.image(snake_head, next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
+			prev_snake_pos = snake_itr.next();
+			Model.p_app.image(snake_head, prev_snake_pos.getX()*tile_size, prev_snake_pos.getY()*tile_size, tile_size, tile_size);
+			if(snake_itr.hasNext()) {
+				current_snake_pos = snake_itr.next();
+				PImage image_to_draw;
+				while(snake_itr.hasNext()) {
+					next_snake_pos = snake_itr.next();
+					if(prev_snake_pos.getX() == next_snake_pos.getX() || prev_snake_pos.getY() == next_snake_pos.getY()) {
+						image_to_draw = snake_body_straight;
+					}else {
+						image_to_draw = snake_body_curved;
+					}
+					Model.p_app.image(image_to_draw, current_snake_pos.getX()*tile_size, current_snake_pos.getY()*tile_size, tile_size, tile_size);
+					current_snake_pos = next_snake_pos;
+				}
+				Model.p_app.image(snake_tail, current_snake_pos.getX()*tile_size, current_snake_pos.getY()*tile_size, tile_size, tile_size);	
+			}
 		}
-		int num = 1;
-		while(snake_itr.hasNext()) {
-			next_snake_pos = snake_itr.next();
-			Model.p_app.image(snake_body, next_snake_pos.getX()*tile_size, next_snake_pos.getY()*tile_size, tile_size, tile_size);
-			Model.p_app.textAlign(PApplet.CENTER);
-			Model.p_app.textSize(40);
-			Model.p_app.fill(255, 255, 255);
-			Model.p_app.text(num, (next_snake_pos.getX() + (float).5)*tile_size, (next_snake_pos.getY()+ (float).5)*tile_size+20);
-			++num;
-		}
-		
-		
 		
 		state_object_manager.draw();
 	}
