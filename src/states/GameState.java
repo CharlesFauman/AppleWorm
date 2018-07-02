@@ -251,17 +251,71 @@ public final class GameState extends State{
 			if(snake_itr.hasNext()) {
 				current_snake_pos = snake_itr.next();
 				PImage image_to_draw;
+				float rotation_amount = 0;
 				while(snake_itr.hasNext()) {
 					next_snake_pos = snake_itr.next();
 					if(prev_snake_pos.getX() == next_snake_pos.getX() || prev_snake_pos.getY() == next_snake_pos.getY()) {
 						image_to_draw = snake_body_straight;
+						if(prev_snake_pos.getX() == next_snake_pos.getX()) {
+							rotation_amount = PApplet.PI/2;
+						}else {
+							rotation_amount = 0;
+						}
 					}else {
 						image_to_draw = snake_body_curved;
+						if(prev_snake_pos.getX() == current_snake_pos.getX()) {
+							if(prev_snake_pos.getY() > current_snake_pos.getY()) {
+								if(next_snake_pos.getX() > current_snake_pos.getX()) {
+									rotation_amount = PApplet.PI;
+								}else {
+									rotation_amount = 3*PApplet.PI/2; //
+								}
+							}else {
+								if(next_snake_pos.getX() > current_snake_pos.getX()) {
+									rotation_amount = PApplet.PI/2; //
+								}else {
+									rotation_amount = 0;
+								}
+							}
+						}else {
+							if(prev_snake_pos.getX() > current_snake_pos.getX()) {
+								if(next_snake_pos.getY() > current_snake_pos.getY()) {
+									rotation_amount = PApplet.PI; //
+								}else {
+									rotation_amount = PApplet.PI/2;
+								}
+							}else {
+								if(next_snake_pos.getY() > current_snake_pos.getY()) {
+									rotation_amount = 3*PApplet.PI/2; //
+								}else {
+									rotation_amount = 0;
+								}
+							}
+						}
 					}
-					Model.p_app.image(image_to_draw, current_snake_pos.getX()*tile_size, current_snake_pos.getY()*tile_size, tile_size, tile_size);
+					Model.p_app.pushMatrix();
+					Model.p_app.translate(((float)current_snake_pos.getX() + (float)(.5))*tile_size, ((float)current_snake_pos.getY() + (float)(.5))*tile_size);
+					Model.p_app.rotate(rotation_amount);
+					Model.p_app.image(image_to_draw, -tile_size/2 - 1, -tile_size/2 - 1, tile_size + 2, tile_size + 2);
+					Model.p_app.popMatrix();
+					prev_snake_pos = current_snake_pos;
 					current_snake_pos = next_snake_pos;
 				}
-				Model.p_app.image(snake_tail, current_snake_pos.getX()*tile_size, current_snake_pos.getY()*tile_size, tile_size, tile_size);	
+				
+				if(prev_snake_pos.getX() > current_snake_pos.getX()) {
+					rotation_amount = 0;
+				}else if(prev_snake_pos.getY() > current_snake_pos.getY()){
+					rotation_amount = PApplet.PI/2;
+				}else if(prev_snake_pos.getX() < current_snake_pos.getX()){
+					rotation_amount = PApplet.PI;
+				}else {
+					rotation_amount = 3*PApplet.PI/2;
+				}
+				Model.p_app.pushMatrix();
+				Model.p_app.translate(((float)current_snake_pos.getX() + (float)(.5))*tile_size, ((float)current_snake_pos.getY() + (float)(.5))*tile_size);
+				Model.p_app.rotate(rotation_amount);
+				Model.p_app.image(snake_tail, -tile_size/2 - 1, -tile_size/2 - 1, tile_size + 2, tile_size + 2);
+				Model.p_app.popMatrix();
 			}
 		}
 		
