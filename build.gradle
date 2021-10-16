@@ -1,0 +1,17 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
+
+
+}
+
+sourceSets.main.output.classesDir = file("classes")
+mainClassName = 'com.example.testing.Main'
+
+defaultTasks 'compileJava', 'run'
