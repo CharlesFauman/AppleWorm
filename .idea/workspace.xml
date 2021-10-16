@@ -1,100 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6a851a7f-4c02-4f3d-8922-d26ed3c82859" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/CustomLevelSelectState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/CustomLevelSelectState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/GameState$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/GameState$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/LevelMakerState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/LevelMakerState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/LevelSelectState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/LevelSelectState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/MainMenuState.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/MainMenuState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/states/State.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/states/State.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/storage/Model$StateEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/storage/Model$StateEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/storage/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/storage/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/storage/SoundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/storage/SoundController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/Direction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/FloatPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/FloatPair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/IntPair.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/IntPair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/Procedure.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/Procedure.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/RandomSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/RandomSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/gui/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/gui/Button.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/gui/StateObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/gui/StateObject.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/gui/StateObjectManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/gui/StateObjectManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/mouse/ClickManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/mouse/ClickManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/mouse/Clickable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/mouse/Clickable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/mouse/EllipseButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/mouse/EllipseButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/util/mouse/RectangleButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/mouse/RectangleButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processing_java.userlibraries" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/apple.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/fire.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/game_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/ground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/portal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/snake_body_curved.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/snake_body_straight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/snake_head.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/snake_tail.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/images/stone.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/custom/alex_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/custom/ben_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/custom/ben_level2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/custom/leo_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/custom/small_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_11.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_12.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_14.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_15.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_16.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_17.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_18.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_19.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_21.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_22.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_23.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_24.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_26.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_27.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_28.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_29.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_30.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/maps/levels/level_9.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/music/The Sky of our Ancestors.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/CustomLevelSelectState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/GameState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/LevelMakerState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/LevelSelectState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/MainMenuState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/states/State.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/SoundController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/FloatPair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/IntPair.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/Procedure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/RandomSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/gui/Button.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/gui/StateObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/gui/StateObjectManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/mouse/ClickManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/mouse/Clickable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/mouse/EllipseButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/mouse/RectangleButton.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/AppleWorm.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -184,10 +114,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="577" y="144" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1634421269333" />
-    <state x="278" y="0" key="SettingsEditor" timestamp="1634420874805">
+    <state x="278" y="0" key="SettingsEditor" timestamp="1634421772094">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="278" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1634420874805" />
+    <state x="278" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1634421772094" />
     <state x="238" y="51" key="new project wizard" timestamp="1634420793729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
