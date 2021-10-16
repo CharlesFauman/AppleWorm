@@ -7,8 +7,6 @@ sourceSets {
             srcDirs 'src'
         }
     }
-
-
 }
 
 sourceSets.main.output.classesDir = file("classes")
