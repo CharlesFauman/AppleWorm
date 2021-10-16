@@ -1,11 +1,14 @@
 apply plugin:'java'
 apply plugin:'application'
-mainClassName = "main.Main"
+mainClassName = "org.fauman.appleworm.Main"
 
 sourceSets {
     main {
         java {
-            srcDirs 'src'
+            srcDirs 'src/main/java'
+        }
+        resources {
+            srcDirs 'src/main/resources'
         }
     }
 }
