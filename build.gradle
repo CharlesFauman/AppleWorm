@@ -1,9 +1,16 @@
-plugins {
-    id 'java'
+apply plugin:'java'
+apply plugin:'application'
+mainClassName = "main.Main"
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+
 
 repositories {
     mavenCentral()
