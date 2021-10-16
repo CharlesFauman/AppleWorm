@@ -4,10 +4,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 
-import ddf.minim.AudioOutput;
-import ddf.minim.AudioPlayer;
-import ddf.minim.Minim;
-import ddf.minim.ugens.Sampler;
+import net.compartmental.code.AudioOutput;
+import net.compartmental.code.AudioPlayer;
+import net.compartmental.code.Minim;
+import net.compartmental.code.ugens.Sampler;
 
 public final class SoundController {
 	private static final SoundController instance = new SoundController();
