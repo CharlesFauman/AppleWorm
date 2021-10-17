@@ -2,3 +2,21 @@ repository:
   name: AppleWorm
 
   description: A java clone of AppleWorm from coolmathgames.com
+
+  homepage: https://github.com/CharlesFauman/AppleWorm
+
+  default_branch: master
+
+labels:
+  - name: bug
+    color: CC0000
+    description: An issue with the system.
+
+  - name: feature
+    color: '#336699'
+    description: New functionality.
+
+branches:
+  - name: master
+
+
