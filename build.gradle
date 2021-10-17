@@ -8,5 +8,5 @@ repositories {
 
 dependencies {
     implementation group: 'org.processing', name: 'core', version: '3.3.6'
-    implementation 'net.compartmental.code:minim:2.2.2'
+    implementation group: 'net.compartmental.code', name: 'minim', version: '2.2.2'
 }
