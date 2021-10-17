@@ -4,6 +4,9 @@ plugins{
     id 'maven-publish'
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 mainClassName = "org.fauman.appleworm.Main"
 
 repositories {
@@ -13,6 +16,16 @@ repositories {
 dependencies {
     implementation group: 'org.processing', name: 'core', version: '3.3.6'
     implementation group: 'net.compartmental.code', name: 'minim', version: '2.2.2'
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': application.mainClassName
+    }
+    from {
+        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 publishing {

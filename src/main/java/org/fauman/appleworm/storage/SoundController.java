@@ -1,13 +1,22 @@
 package org.fauman.appleworm.storage;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.*;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
 import ddf.minim.AudioOutput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import ddf.minim.ugens.Sampler;
+import org.fauman.appleworm.util.FileHelper;
 
 public final class SoundController {
 	private static final SoundController instance = new SoundController();
@@ -37,31 +46,33 @@ public final class SoundController {
 	
 	private void load_music() {
 		music = new HashMap<>();
-		URL url = getClass().getResource("/music/");
-		if(url == null) return;
-	    String path = url.getPath();
-	    File folder = new File(path);
-		String[] music_names = folder.list();
-		for(int i = 0; i < music_names.length; ++i) {
-			String file_name = music_names[i].replace(".mp3", "");
-			music.put(file_name, minim.loadFile("music/" + file_name + ".mp3"));
+		ImmutableList<String> musics;
+		try {
+			musics = FileHelper.getChildren("/music");
+		} catch (URISyntaxException | IOException e) {
+			e.printStackTrace();
+			return;
+		}
+		for(String music_name : musics) {
+			music.put(music_name, minim.loadFile("music/" + music_name + ".mp3"));
 		}
 	}
 	
 	private void load_sounds() {
 		sounds = new HashMap<>();
 		AudioOutput out = minim.getLineOut();
-		
-		URL url = getClass().getResource("/sounds/");
-		if(url == null) return;
-	    String path = url.getPath();
-	    File folder = new File(path);
-		String[] music_names = folder.list();
-		for(int i = 0; i < music_names.length; ++i) {
-			String file_name = music_names[i].replace(".wav", "");
-			Sampler sampler = new Sampler("sounds/" + file_name + ".wav", MAX_SAME_OVERLAP, minim);
+
+		ImmutableList<String> sound_names;
+		try {
+			sound_names = FileHelper.getChildren("/sounds");
+		} catch (URISyntaxException | IOException e) {
+			e.printStackTrace();
+			return;
+		}
+		for(String sound_name: sound_names) {
+			Sampler sampler = new Sampler("sounds/" + sound_name + ".wav", MAX_SAME_OVERLAP, minim);
 			sampler.patch(out);
-			sounds.put(file_name, sampler);
+			sounds.put(sound_name, sampler);
 		}
 	}
 	

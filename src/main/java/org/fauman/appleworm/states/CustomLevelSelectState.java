@@ -2,8 +2,12 @@ package org.fauman.appleworm.states;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 
+import com.google.common.collect.ImmutableList;
+import org.fauman.appleworm.util.FileHelper;
 import processing.event.MouseEvent;
 import org.fauman.appleworm.storage.Model;
 import org.fauman.appleworm.util.gui.Button;
@@ -23,23 +27,19 @@ public final class CustomLevelSelectState extends State {
 	// hardcoded settings _____________________________________:
 	public final static int num_cols = 5;
 	public final static int num_rows = 3;
-	
-	private static int num_custom_levels;
+
 	private static String[] level_names;
 	
 	private static int start_level = 1;
 	
 	// hardcoded settings --------------------------------------:
 	
-	private CustomLevelSelectState() {		
-		URL url = getClass().getResource("/maps/custom/");
-		if(url == null) return;
-	    String path = url.getPath();
-	    File folder = new File(path);
-		level_names = folder.list();
-		num_custom_levels = level_names.length;
-		for(int i = 0; i < num_custom_levels; ++i) {
-			level_names[i] = level_names[i].replace(".txt", "");
+	private CustomLevelSelectState() {
+		try {
+			level_names = FileHelper.getChildren("/maps/custom").toArray(String[]::new);
+		} catch (URISyntaxException | IOException e) {
+			e.printStackTrace();
+			return;
 		}
 	}
 	
@@ -117,7 +117,7 @@ public final class CustomLevelSelectState extends State {
 			click_manager.addObject(left_button);
 			state_object_manager.addObject(left_button);
 		}
-		if(start_level + num_rows*num_cols < num_custom_levels) {
+		if(start_level + num_rows*num_cols < level_names.length) {
 			Button right_button = new EllipseButton(Model.size.getX() - Model.size.getX()/8, Model.size.getY()/2, Model.size.getX()/8, Model.size.getX()/8);
 			right_button.setOnClick(() -> {
 				start_level += (num_rows*num_cols);
@@ -137,7 +137,7 @@ public final class CustomLevelSelectState extends State {
 				float x = (float) (offset_x + ((float)col*1.2)*button_size);
 				float y = (float) (offset_y + ((float)row*1.2)*button_size);
 				int button_level_val = col + row*num_cols + start_level - 1;
-				if(button_level_val >= num_custom_levels) continue;
+				if(button_level_val >= level_names.length) continue;
 				Button level_button = new RectangleButton(x, y, button_size, button_size);
 				level_button.setOnClick(() -> {
 					Model.current_custom_num = button_level_val+1;
