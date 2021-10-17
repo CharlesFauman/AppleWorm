@@ -38,6 +38,7 @@ public final class SoundController {
 	private void load_music() {
 		music = new HashMap<>();
 		URL url = getClass().getResource("/music/");
+		if(url == null) return;
 	    String path = url.getPath();
 	    File folder = new File(path);
 		String[] music_names = folder.list();
@@ -52,6 +53,7 @@ public final class SoundController {
 		AudioOutput out = minim.getLineOut();
 		
 		URL url = getClass().getResource("/sounds/");
+		if(url == null) return;
 	    String path = url.getPath();
 	    File folder = new File(path);
 		String[] music_names = folder.list();

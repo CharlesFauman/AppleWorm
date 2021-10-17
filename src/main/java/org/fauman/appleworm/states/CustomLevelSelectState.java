@@ -33,6 +33,7 @@ public final class CustomLevelSelectState extends State {
 	
 	private CustomLevelSelectState() {		
 		URL url = getClass().getResource("/maps/custom/");
+		if(url == null) return;
 	    String path = url.getPath();
 	    File folder = new File(path);
 		level_names = folder.list();

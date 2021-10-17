@@ -161,9 +161,7 @@ public final class GameState extends State{
 				snake_tiles.add(current_snake_tile.getKey());
 			}
 			
-			
 			map_reader.close();
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
