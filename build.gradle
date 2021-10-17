@@ -26,7 +26,7 @@ publishing {
 
             pom {
                 name = 'Appleworm'
-                description = 'A java clone of appleworm coolmathgames.com'
+                description = 'A java clone of AppleWorm from coolmathgames.com'
                 url = 'https://github.com/CharlesFauman/AppleWorm'
                 licenses {
                     license {
