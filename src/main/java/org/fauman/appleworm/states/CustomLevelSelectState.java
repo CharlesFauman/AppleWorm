@@ -32,7 +32,7 @@ public final class CustomLevelSelectState extends State {
 	// hardcoded settings --------------------------------------:
 	
 	private CustomLevelSelectState() {		
-		URL url = getClass().getResource("/org/fauman/data/maps/custom/");
+		URL url = getClass().getResource("/maps/custom/");
 	    String path = url.getPath();
 	    File folder = new File(path);
 		level_names = folder.list();

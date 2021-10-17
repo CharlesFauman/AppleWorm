@@ -107,7 +107,7 @@ public final class GameState extends State{
 	}
 	
 	private void load_level(String map_path) {
-		InputStream map_stream = getClass().getResourceAsStream("/org/fauman/data/maps/" + map_path + ".txt");
+		InputStream map_stream = getClass().getResourceAsStream("/maps/" + map_path + ".txt");
 		BufferedReader map_reader = new BufferedReader(new InputStreamReader(map_stream));
 		try {
 			
